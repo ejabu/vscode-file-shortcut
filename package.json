@@ -1,0 +1,58 @@
+{
+    "name": "file-shortcut",
+    "displayName": "File Shortcut",
+    "description": "One click to open your favorite file list",
+    "icon": "file.png",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/ejabu/vscode-file-shortcut"
+    },
+    "publisher": "ejabudev",
+    "version": "0.1.0",
+    "enableProposedApi": false,
+    "engines": {
+        "vscode": "^1.25.0"
+    },
+    "keywords": [],
+    "categories": [
+        "Other"
+    ],
+    "activationEvents": [
+        "*"
+    ],
+    "main": "./out/extension.js",
+    "contributes": {
+        "snippets": [],
+        "themes": [],
+        "commands": [
+            {
+                "command": "fileShortcut.showFileList",
+                "title": "File Shortcut : Open File List"
+            }
+        ],
+        "configuration": {
+            "type": "object",
+            "title": "File Shortcut",
+            "properties": {
+                "fileShortcut.list": {
+                    "type": "array",
+                    "default": []
+                }
+            }
+        }
+    },
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./",
+        "postinstall": "node ./node_modules/vscode/bin/install",
+        "test": "npm run compile && node ./node_modules/vscode/bin/test"
+    },
+    "devDependencies": {
+        "typescript": "^3.1.4",
+        "vscode": "^1.1.25",
+        "tslint": "^5.8.0",
+        "@types/node": "^8.10.25",
+        "@types/mocha": "^2.2.42"
+    }
+}

@@ -1,0 +1,12 @@
+{
+  "tasks": [
+    {
+      "name": "Task",
+      "complete": false,
+      "creationDate": "2019-07-30T11:40:59.225Z",
+      "files": [
+        "src/commands/index.ts"
+      ]
+    }
+  ]
+}
