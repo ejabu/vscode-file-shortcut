@@ -8,7 +8,7 @@
         "url": "https://github.com/ejabu/vscode-file-shortcut"
     },
     "publisher": "ejabudev",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "enableProposedApi": false,
     "engines": {
         "vscode": "^1.25.0"
