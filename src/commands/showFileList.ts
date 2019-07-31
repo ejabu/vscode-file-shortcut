@@ -5,7 +5,15 @@ import { getConf } from '../utils/config';
 export function showFileList() {
     return commands.registerCommand('fileShortcut.showFileList', async () => {
         var filePaths = getConf('list') as string[] || [];
-        showQuickPick(filePaths)
+        if (!filePaths.length){
+            window.showErrorMessage(`No config file found`);
+            return
+        }
+        if (filePaths.length == 1) {
+            openFile(filePaths[0])
+        } else {
+            showQuickPick(filePaths)
+        }
     });
 }
 
@@ -22,20 +30,24 @@ async function showDocument(document: TextDocument) {
     textEditor.selection = newSelection;
 }
 
-export async function showQuickPick(filePaths: string[]) {
-    let i = 0;
-    const result = await window.showQuickPick(filePaths, {
-        placeHolder: 'Pick a file to open',
-        // onDidSelectItem: item => window.showInformationMessage(`Focus ${++i}: ${item}`)
-    });
-    const fileName = result.split("/").pop()
+async function openFile(filePath: string) {
+    const fileName = filePath.split("/").pop()
     try {
-        const document = await workspace.openTextDocument(result);
+        const document = await workspace.openTextDocument(filePath);
         showDocument(document)
-        // window.showInformationMessage(`Success : ${result}`);
+        // window.showInformationMessage(`Success : ${filePath}`);
     } catch (error) {
         if (error.message.includes("cannot open file")) {
             window.setStatusBarMessage(`$(x) File ${fileName} not found`, 2000);
         }
     }
+}
+
+async function showQuickPick(filePaths: string[]) {
+    let i = 0;
+    const filePath = await window.showQuickPick(filePaths, {
+        placeHolder: 'Pick a file to open',
+        // onDidSelectItem: item => window.showInformationMessage(`Focus ${++i}: ${item}`)
+    });
+    openFile(filePath);
 }
