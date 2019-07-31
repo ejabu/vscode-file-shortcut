@@ -30,13 +30,20 @@
                 "title": "File Shortcut : Open File List"
             }
         ],
+        "keybindings": [
+            {
+                "key": "meta+f",
+                "command": "fileShortcut.showFileList"
+            }
+        ],
         "configuration": {
             "type": "object",
             "title": "File Shortcut",
             "properties": {
                 "fileShortcut.list": {
                     "type": "array",
-                    "default": []
+                    "default": [],
+                    "description": "List of favorite Files. Please add  \"fileShortcut.list\": [] in settings.json"
                 }
             }
         }
