@@ -1,16 +1,14 @@
 import { commands, window, workspace, Position, Selection, TextDocument } from 'vscode';
 import { getConf } from '../utils/config';
 
-
-export function showFileList() {
-    return commands.registerCommand('fileShortcut.showFileList', async () => {
+export function showTopFile() {
+    return commands.registerCommand('fileShortcut.showTopFile', async () => {
         var filePaths = getConf('list') as string[] || [];
         if (!filePaths.length){
             window.showErrorMessage(`No config file found`);
             return
-        }
-        if (filePaths.length > 0) {
-            showQuickPick(filePaths)
+        } else {
+            openFile(filePaths[0])
         }
     });
 }

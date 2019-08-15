@@ -8,7 +8,7 @@
         "url": "https://github.com/ejabu/vscode-file-shortcut"
     },
     "publisher": "ejabudev",
-    "version": "0.2.0",
+    "version": "0.3.0",
     "enableProposedApi": false,
     "engines": {
         "vscode": "^1.25.0"
@@ -28,22 +28,29 @@
             {
                 "command": "fileShortcut.showFileList",
                 "title": "File Shortcut : Open File List"
+            },
+            {
+                "command": "fileShortcut.showTopFile",
+                "title": "File Shortcut : Open Top File"
             }
         ],
         "keybindings": [
             {
                 "key": "meta+f",
-                "command": "fileShortcut.showFileList"
+                "command": "fileShortcut.showTopFile"
             }
         ],
         "configuration": {
             "type": "object",
-            "title": "File Shortcut",
+            "title": "File Shortcuts",
             "properties": {
                 "fileShortcut.list": {
                     "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
                     "default": [],
-                    "description": "List of favorite Files. Please add  \"fileShortcut.list\": [] in settings.json"
+                    "description": "List of favorite Files. e.g /home/user/cheatsheet.md"
                 }
             }
         }

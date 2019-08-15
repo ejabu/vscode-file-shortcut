@@ -9,3 +9,8 @@ By : [Ejabu](https://ejabu.github.io/)
 **Enjoy!**
 
 
+## Contribute
+
+Do not forget to click run Watch script to re-compile package before tests it 
+in `Extension Development Host`
+
